@@ -1,0 +1,268 @@
+{
+  "info": {
+    "name": "MCD API - Combined Routes",
+    "description": "API routes for managing users, carts, orders, products, and hotels in the MCD system",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/create/user",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "create", "user"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"example@gmail.com\",\n  \"phone_number\": 1234567890,\n  \"password_hash\": \"password\",\n  \"name\": \"John Doe\",\n  \"role\": \"user\"\n}"
+            }
+          }
+        },
+        {
+          "name": "User Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/user/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "user", "login"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"example@gmail.com\",\n  \"password\": \"password\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get User By ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/v1/user/:userID",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "user", ":userID"],
+              "variable": [
+                { "key": "userID", "value": "1" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Product",
+      "item": [
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/create/product",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "create", "product"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Product Name\",\n  \"stock_left\": 100,\n  \"hotel_id\": 1,\n  \"category\": \"Category\",\n  \"price\": 50\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Product By ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/v1/product/:productID",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "product", ":productID"],
+              "variable": [
+                { "key": "productID", "value": "1" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Products By Hotel",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/v1/hotel/:hotelID/products",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "hotel", ":hotelID", "products"],
+              "variable": [
+                { "key": "hotelID", "value": "1" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Hotel",
+      "item": [
+        {
+          "name": "Create Hotel",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/create/hotel",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "create", "hotel"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Hotel Name\",\n  \"city\": \"City\",\n  \"address\": \"Address\",\n  \"state\": \"State\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get Hotels",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/v1/hotel",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "hotel"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cart and Order",
+      "item": [
+        {
+          "name": "Add Product to Cart",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/add/user/cart",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "add", "user", "cart"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"product_id\": 101,\n  \"quantity\": 2\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Product from Cart",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/delete/user/cart",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "delete", "user", "cart"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"product_id\": 101\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Quantity in Cart",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/update/user/cart",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "update", "user", "cart"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"product_id\": 101,\n  \"quantity\": 5\n}"
+            }
+          }
+        },
+        {
+          "name": "Get User Cart",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/user/cart?userID=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "user", "cart"],
+              "query": [
+                {
+                  "key": "userID",
+                  "value": "1"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/v1/hotel/1/create/order",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "hotel", "1", "create", "order"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"phone_number\": 1234567890,\n  \"order_status\": \"Pending\",\n  \"is_cancelled\": false,\n  \"drive_thru_code\": \"ABC123\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Get User Orders",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/v1/user/1/orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["v1", "user", "1", "orders"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

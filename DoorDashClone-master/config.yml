@@ -1,0 +1,16 @@
+DB_MYSQL_SECRETS: '{"username":"admin","password":"BaLiDiNeSh5","type":"mysql","host":"database-1.c1w2ua0029vr.us-east-2.rds.amazonaws.com","port":"3306","DatabaseName":"doordash"}'
+
+
+REDIS_CLUSTER_MODE_ENABLED: true
+REDIS_HOST: "bb-redis-cluster-1.do8rcv.clustercfg.aps1.cache.amazonaws.com"
+
+REDIS_PORT: 6379
+REDIS_PASSWORD:
+REDIS_DB: 0
+
+REDIS_DIAL_TIMEOUT: 1000
+REDIS_READ_TIMEOUT: 1000
+REDIS_WRITE_TIMEOUT: 1000
+
+REDIS_CACHE_TTL: 3600
+REDIS_CACHE_PURGE_ENABLED: "false"
